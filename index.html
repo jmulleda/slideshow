@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Big Cats | Slideshow</title>
+    <link rel="icon" href="./images/favicon.ico">
+    <script src="https://kit.fontawesome.com/f8c4fa4912.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                 <i class="fa-solid fa-paw"></i>
+                <h1>The Big<span> Cats</span></h1>
+            </div>
+
+            <div class="options">
+                <!-- <a href="./index.html"></i>Home</a>
+                <a href="./index.html">Tiger</a>
+                <a href="./index.html">Lion</a>
+                <a href="./index.html">Cheetah</a>
+                <a href="./index.html">Jaguar</a>
+                <a href="./leopard.html">Leopard</a>
+                <a href="./snow-leopard.html">Snow Leopard</a>
+                <a href="./cougar.html">Cougar</a> 
+                <a href="./index.html" class="current"><i class="fa-solid fa-paw"></i> Contact Us</a>-->
+            </div>
+
+            <div class="social">
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-youtube"></i></a>
+                <input type="text" placeholder="Search...">
+                <a href=""><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container"><br>
+            <h2>SLIDESHOW 101</h2><br>
+            <div class="controls">
+                <button id="regularButton" onclick="previousSlide()">Previous</button>
+                <button id="playButton" onclick="playSlideshow()">Play</button>
+                <button id="stopButton" onclick="stopSlideshow()">Stop</button>
+                <button id="regularButton" onclick="nextSlide()">Next </button>
+            </div>
+    
+            <div class="slideshow">
+                <img src="./images/1.jpg" alt="Image 1">
+            </div>
+            <div class="slideshow">
+                <img src="./images/2.jpg" alt="Image 2">
+            </div>
+            <div class="slideshow">
+                <img src="./images/3.jpg" alt="Image 3">
+            </div>
+            <div class="slideshow">
+                <img src="./images/4.jpg" alt="Image 4">
+            </div>
+            <div class="slideshow">
+                <img src="./images/5.jpg" alt="Image 5">
+            </div>
+            <div class="slideshow">
+                <img src="./images/6.jpg" alt="Image 6">
+            </div>
+            <div class="slideshow">
+                <img src="./images/7.jpg" alt="Image 7">
+            </div>
+            <div class="slideshow">
+                <img src="./images/8.jpg" alt="Image 8">
+            </div>
+            <div class="slideshow">
+                <img src="./images/9.jpg" alt="Image 9">
+            </div>
+        </div>
+    </main>
+<footer>
+    <div class="container">
+        <div class="footer">
+
+        <div class="copyright">
+            <p>Copyright &copy; 2023 | Jonathan Mulleda | All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+
+    let slides = document.querySelectorAll('.slideshow');
+    let playButton = document.getElementById('playButton');
+    let stopButton = document.getElementById('stopButton');
+    let interval;
+    let indexSlide = 0;
+    let play = false;
+
+    function showSlide(x) {
+        if (x < 0) {
+            indexSlide = slides.length - 1;
+        } else if (x >= slides.length) {
+            indexSlide = 0;
+        }
+
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[indexSlide].style.display = "block";
+    }
+
+    function playSlideshow() {
+        if (!play) {
+            play = true;
+            playButton.innerText = "Pause";
+            interval = setInterval(nextSlide, 2000); // every 2 seconds
+        } else {
+            play = false;
+            playButton.innerText = "Play";
+            clearInterval(interval); // clears timer 
+        }
+    }
+
+    function stopSlideshow() {
+        play = false;
+        playButton.innerText = "Play";
+        clearInterval(interval); // clears timer
+    }
+
+    function nextSlide() {
+        showSlide(indexSlide + 1);
+        indexSlide++;
+    }
+
+    function previousSlide() {
+        showSlide(indexSlide - 1);
+        indexSlide--;
+    }
+
+    window.onload = playSlideshow(); // play slide show on page load
+
+</script>
+
+</body>
+</html>
